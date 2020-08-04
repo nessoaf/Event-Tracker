@@ -5,19 +5,18 @@ import axios from 'axios';
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 
-
 export default function Calendar(props) {
     let user = props.user
-    let zipcode = user.zipcode
-    if (!zipcode) { zipcode = 98101 }
-    // test array of objects to mimic API response
+
     const testEvents = [{
         "url": "http://sandiego.eventful.com/events/lgbt-book-club-/E0-001-134699507-9?utm_source=apis&utm_medium=apim&utm_campaign=apic",
         "id": "E0-001-134699507-9",
         "city_name": "San Diego"
     }]
-
-    let backupCall = `https://cors-anywhere.herokuapp.com/http://api.eventful.com/json/events/search?app_key=${process.env.REACT_APP_EVENTFUL_KEY}&keywords=concerts&location=${zipcode}&date=Future`
+    let backupCall = user ?
+        `https://cors-anywhere.herokuapp.com/http://api.eventful.com/json/events/search?app_key=${process.env.REACT_APP_EVENTFUL_KEY}&location=${user.zipcode}&date=Future`
+        :
+        `https://cors-anywhere.herokuapp.com/http://api.eventful.com/json/events/search?app_key=${process.env.REACT_APP_EVENTFUL_KEY}&location=Seattle&date=Future`
 
     //calls API on page render
     useEffect(() => {
@@ -30,7 +29,6 @@ export default function Calendar(props) {
             .catch(err => console.log('ERROR IN frontend /components/Calendar.js: ' + err))
     }, [])
 
-    //array of objects, iterated on in EventsDisplay.js
     const [events, setEvents] = useState(testEvents)
 
     return (
@@ -45,7 +43,8 @@ export default function Calendar(props) {
                 <div class="col-6">
                     <FullCalendar
                         plugins={[dayGridPlugin]}
-                        initialView="dayGridMonth" />
+                        initialView="dayGridMonth"
+                    />
                 </div>
             </div>
         </div>
