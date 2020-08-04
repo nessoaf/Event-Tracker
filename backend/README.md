@@ -1,16 +1,14 @@
-# MERN Auth Backend for General Assembly project 3 full stack web app
+# Backend
  - Nesso Forest
  - Jimmy Grenadino
  - Thomas Helderop
- - Louis Reilly-Willhight (backend lead)
+ - Louis Reilly-Willhight(Main Backend Dev)
 
 ### ROUTES
 
-LOCAL = localhost:3001
+GET / - An amusing quote from a famous cartoon robot
 
-GET / - an amusing quote from a famous cartoon robot
-
-//shema USER
+#### Shema USER
 
 GET /v1/users - (list of all users in collection 'users')
 GET /v1/users/view/:id - (view single user using req.params)
@@ -34,11 +32,6 @@ POST /v1/addEvent
 PUT /v1/updateEventByTitle/:title
 DELETE /v1/deleteEventByTitle/:title
 
-
-### TODO
-UPDATE MODELS EVENT.JS AND FAVORITE.JS TO INCLUDE UNIQUE IDENTIFIERS
-UPDATE ROUTES TO REFLECT CHANGES IN MODEL SCHEMA (CURRENTLY "TITLE: ID")
-
 ### Technologies
 
 The following technologies were used for this project:
@@ -52,4 +45,4 @@ The following technologies were used for this project:
 * Bcrypt
 * Gravatar
 
-### original code c/o Anna Zocher, Sarah King, Nick Quandt, Milcah 
+### Original Code Co-Authored by Anna Zocher, Sarah King, Nick Quandt, & Milcah 
